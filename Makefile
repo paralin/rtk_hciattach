@@ -1,10 +1,14 @@
+CC	?= gcc
+CFLAGS	?= -W -Wall
+LDFLAGS ?=
+
 all: rtk_hciattach
 
 rtk_hciattach: hciattach.c hciattach_rtk.o
-	cc -o rtk_hciattach hciattach.c hciattach_rtk.o
+	$(CC) $(CFLAGS) -o rtk_hciattach hciattach.c hciattach_rtk.o $(LDFLAGS)
 
-hciattach_rtk.o:hciattach_rtk.c
-	cc -c hciattach_rtk.c
+hciattach_rtk.o: hciattach_rtk.c
+	$(CC) $(CFLAGS) -c hciattach_rtk.c $(LDFLAGS)
 
 clean:
 	rm -f *.o  rtk_hciattach tags cscope.*
